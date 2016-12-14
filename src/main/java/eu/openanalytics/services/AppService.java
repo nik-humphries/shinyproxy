@@ -52,6 +52,7 @@ public class AppService {
 		private String logoUrl;
 		private String[] dockerCmd;
 		private String dockerImage;
+		private String dockerBind;
 		private String[] dockerDns;
 		private String dockerMemory;
 		private String dockerEnvFile;
@@ -98,7 +99,14 @@ public class AppService {
 		public void setDockerImage(String dockerImage) {
 			this.dockerImage = dockerImage;
 		}
-		
+
+		public String getDockerBind() {
+			return dockerBind;
+		}
+		public void setDockerBind(String dockerBind) {
+			this.dockerBind = dockerBind;
+		}
+
 		public String[] getDockerDns() {
 			return dockerDns;
 		}

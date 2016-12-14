@@ -240,10 +240,11 @@ public class DockerService {
 			
 			Builder hostConfigBuilder = HostConfig.builder();
 			if (memoryLimit > 0) hostConfigBuilder.memory(memoryLimit);
+			if (app.getDockerBind() != null) hostConfigBuilder.binds(app.getDockerBind());
 			final HostConfig hostConfig = hostConfigBuilder
 					.portBindings(portBindings)
 					.dns(app.getDockerDns())
-					.build();
+				    .build();
 			
 			final ContainerConfig containerConfig = ContainerConfig.builder()
 				    .hostConfig(hostConfig)
