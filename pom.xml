@@ -5,7 +5,7 @@
 
 	<groupId>eu.openanalytics</groupId>
 	<artifactId>shinyproxy-gen</artifactId>
-	<version>2.6.1-0.0.1</version>
+	<version>2.6.1-0.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>ShinyProxy</name>
