@@ -134,6 +134,7 @@ public abstract class BaseController {
 		map.put("isSupportEnabled", isLoggedIn && getSupportAddress() != null);
 		map.put("logoutUrl", authenticationBackend.getLogoutURL());
 		map.put("isAppPage", false); // defaults, used in navbar
+		map.put("isIndexPage", false); // defaults, used for showing appselector
 		map.put("maxInstances", 0); // defaults, used in navbar
 		map.put("contextPath", getContextPath());
 

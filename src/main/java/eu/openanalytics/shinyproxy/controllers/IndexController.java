@@ -86,6 +86,9 @@ public class IndexController extends BaseController {
 		// operator specific
 		map.put("operatorShowTransferMessage", operatorService.showTransferMessageOnMainPage());
 
+		// Needed for appselector
+		map.put("isIndexPage", true);
+
 		return "index";
     }
 
