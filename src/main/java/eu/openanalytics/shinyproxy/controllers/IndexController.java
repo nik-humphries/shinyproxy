@@ -1,7 +1,7 @@
 /**
  * ShinyProxy
  *
- * Copyright (C) 2016-2021 Open Analytics
+ * Copyright (C) 2016-2023 Open Analytics
  *
  * ===========================================================================
  *
@@ -99,6 +99,9 @@ public class IndexController extends BaseController {
 		map.put("page", "index");
 
 		map.put("myAppsMode", myAppsMode.toString());
+
+		// Needed for appselector
+		map.put("isIndexPage", true);
 
 		return "index";
     }
