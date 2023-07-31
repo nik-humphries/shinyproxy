@@ -75,6 +75,13 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+// Need these things for appselector
+import eu.openanalytics.shinyproxy.ShinyProxySpecProvider;
+import eu.openanalytics.shinyproxy.ShinyProxySpecExtension;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
+// End need these things for appselector
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -165,6 +172,37 @@ public class AppController extends BaseController {
 			map.put("parameterIds", null);
 			map.put("parameterFragment", null);
 		}
+
+
+		// This is needed for the appselector to work
+		ProxySpec[] apps = proxyService.getProxySpecs(null, false).toArray(new ProxySpec[0]);
+		map.put("apps", apps);
+
+		Map<ProxySpec, String> appLogos = new HashMap<>();
+		map.put("appLogos", appLogos);
+
+		// template groups
+		HashMap<String, ArrayList<ProxySpec>> groupedApps = new HashMap<>();
+		List<ProxySpec> ungroupedApps = new ArrayList<>();
+
+		for (ProxySpec app: apps) {
+			String groupId = app.getSpecExtension(ShinyProxySpecExtension.class).getTemplateGroup();
+			if (groupId != null) {
+				groupedApps.putIfAbsent(groupId, new ArrayList<>());
+				groupedApps.get(groupId).add(app);
+			} else {
+				ungroupedApps.add(app);
+			}
+		}
+
+		List<ShinyProxySpecProvider.TemplateGroup> templateGroups = shinyProxySpecProvider.getTemplateGroups().stream().filter((g) -> groupedApps.containsKey(g.getId())).collect(Collectors.toList());
+		map.put("templateGroups", templateGroups);
+		map.put("groupedApps", groupedApps);
+		map.put("ungroupedApps", ungroupedApps);
+
+		// end this is needed for the appselector to work
+
+	
 
 		return new ModelAndView("app", map);
 	}

@@ -7,3 +7,5 @@
 .classpath
 .settings
 
+bin/**
+settings.json

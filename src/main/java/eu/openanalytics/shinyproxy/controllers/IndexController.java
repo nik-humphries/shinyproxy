@@ -100,6 +100,9 @@ public class IndexController extends BaseController {
 
 		map.put("myAppsMode", myAppsMode.toString());
 
+		// Needed for appselector
+		map.put("isIndexPage", true);
+
 		return "index";
     }
 

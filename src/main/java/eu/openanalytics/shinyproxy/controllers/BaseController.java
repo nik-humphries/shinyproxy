@@ -132,6 +132,8 @@ public abstract class BaseController {
 		map.put("appMaxInstances", shinyProxySpecProvider.getMaxInstances());
 		map.put("pauseSupported", backend.supportsPause());
 		map.put("spInstance", identifierService.instanceId);
+
+		map.put("userGroups", userService.getGroups());
 	}
 	
 	protected String getSupportAddress() {
