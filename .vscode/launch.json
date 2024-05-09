@@ -5,7 +5,8 @@
             "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
-            "mainClass": "eu.openanalytics.containerproxy.ContainerProxyApplication"
+            "mainClass": "eu.openanalytics.containerproxy.ContainerProxyApplication",
+            "projectName": "shinyproxy-gen"
         }
     ]
 }
